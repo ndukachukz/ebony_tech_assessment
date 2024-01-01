@@ -1,4 +1,4 @@
-# Ebony Tech Assessment React Native App Documentation
+# Ebony Tech Assessment React Native
 
 ## Introduction
 
