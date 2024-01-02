@@ -3,18 +3,18 @@ import {useQueries, useQuery} from 'react-query';
 import {useAppContext} from '../context';
 import {FAKESTOREAPI} from '../constants';
 
-export function useCategories() {
-  const [] = useAppContext();
+export function useProduct(id: string) {
+  const [state, dispatch] = useAppContext();
   const query = useQuery({
-    queryKey: ['categories'],
+    queryKey: [`product:${id}`],
     queryFn: () => {
       return axios.get(FAKESTOREAPI.CATEGORIES());
     },
     onSuccess(data) {
-      console.log('FETCHED CATEGORIES => ', data.data);
+      console.log('FETCHED PRODUCT => ', data.data);
     },
     onError(error) {
-      console.log('ERROR FETCHING CATEGORIES => ', error);
+      console.log('ERROR FETCHING PRODUCT => ', error);
     },
   });
 

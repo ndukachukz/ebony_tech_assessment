@@ -1,14 +1,16 @@
 export const FAKESTOREAPI = {
   BASE_URL: 'https://fakestoreapi.com/',
-  PRODUCTS: function () {
+
+  PRODUCTS: function (): string {
     return `${this.BASE_URL}products/`;
   },
-  CATEGORIES: function () {
-    return `${this.PRODUCTS}/categories/`;
+
+  CATEGORIES: function (): string {
+    return `${this.PRODUCTS()}categories/`;
   },
 
   CATEGORY: function (category: string) {
-    return `${this.PRODUCTS}category/${category}`;
+    return `${this.PRODUCTS()}category/${category}`;
   },
 };
 

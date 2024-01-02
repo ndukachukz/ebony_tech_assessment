@@ -2,6 +2,7 @@ import {useToastController} from '@tamagui/toast';
 import axios from 'axios';
 import {useMutation} from 'react-query';
 import {useAppContext} from '../context';
+import {FAKESTOREAPI} from '../constants';
 
 export function useLogin<T = {username: string; password: string}>() {
   const [state, dispach] = useAppContext();
@@ -9,18 +10,17 @@ export function useLogin<T = {username: string; password: string}>() {
   const mutation = useMutation({
     mutationKey: ['login'],
     mutationFn: (data: T) =>
-      axios.post('https://fakestoreapi.com/auth/login', data),
+      axios.post(`${FAKESTOREAPI.BASE_URL}auth/login`, data),
     onSuccess: data => {
       dispach({type: 'set_user', payload: {user: {token: data.data.token}}});
-      toast.show('Login Success', {native: true});
+      toast.show('Login Success', {});
     },
     onError: (error: any) => {
       if (error.response.status === 401) {
         toast.show('username or password is incorrect', {
-          native: true,
           message: 'username or password is incorrect',
         });
-      } else toast.show('Login Error', {native: true, message: error.message});
+      } else toast.show('Login Error', {message: error.message});
     },
   });
 

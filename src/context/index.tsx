@@ -4,7 +4,7 @@ type AppState = {
   user: {
     token: string;
   } | null;
-  category: null;
+  categories: string[];
 };
 
 type ReducerActions = 'set_user' | 'set_categories';
@@ -18,7 +18,7 @@ type AppContextType = [AppState, React.Dispatch<AppAction>];
 
 const appState: AppState = {
   user: null,
-  category: null,
+  categories: [],
 };
 
 const AppContext = createContext<AppContextType>([appState, () => {}]);
@@ -31,7 +31,7 @@ function reducer(state: any, action: AppAction): AppState {
     }
 
     case 'set_categories': {
-      return {...state, categories: action.payload.category};
+      return {...state, categories: action.payload.categories};
     }
 
     default:
