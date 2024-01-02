@@ -1,15 +1,17 @@
 import {useToastController} from '@tamagui/toast';
 import axios from 'axios';
 import {useMutation} from 'react-query';
+import {useAppContext} from '../context';
 
 export function useLogin<T = {username: string; password: string}>() {
+  const [state, dispach] = useAppContext();
   const toast = useToastController();
   const mutation = useMutation({
     mutationKey: ['login'],
     mutationFn: (data: T) =>
       axios.post('https://fakestoreapi.com/auth/login', data),
     onSuccess: data => {
-      console.log('Login Success => ', data);
+      dispach({type: 'set_user', payload: {user: {token: data.data.token}}});
       toast.show('Login Success', {native: true});
     },
     onError: (error: any) => {

@@ -18,21 +18,24 @@ import {
 import config from './tamagui.config';
 import Navigator from './src/navigator';
 import {AppToast} from './src/components/Toast';
+import AppProvider from './src/context';
 
 const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <TamaguiProvider config={config}>
-        <ToastProvider>
-          <ToastViewport />
-          <AppToast />
-          <QueryClientProvider client={queryClient}>
-            <Navigator />
-          </QueryClientProvider>
-        </ToastProvider>
-      </TamaguiProvider>
+      <AppProvider>
+        <TamaguiProvider config={config}>
+          <ToastProvider>
+            <ToastViewport />
+            <AppToast />
+            <QueryClientProvider client={queryClient}>
+              <Navigator />
+            </QueryClientProvider>
+          </ToastProvider>
+        </TamaguiProvider>
+      </AppProvider>
     </SafeAreaProvider>
   );
 }

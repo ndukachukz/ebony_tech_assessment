@@ -1,10 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import {ProtectedStackParamList} from '../types';
+import Home from '../screens/protected/Home';
+
+const Stack = createNativeStackNavigator<ProtectedStackParamList>();
 
 export const ProtectedNavigator = () => {
   return (
-    <View>
-      <Text>protected-navigator</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name={'Home'} component={Home} />
+    </Stack.Navigator>
   );
 };

@@ -1,3 +1,17 @@
+export const FAKESTOREAPI = {
+  BASE_URL: 'https://fakestoreapi.com/',
+  PRODUCTS: function () {
+    return `${this.BASE_URL}products/`;
+  },
+  CATEGORIES: function () {
+    return `${this.PRODUCTS}/categories/`;
+  },
+
+  CATEGORY: function (category: string) {
+    return `${this.PRODUCTS}category/${category}`;
+  },
+};
+
 export const FONTS = {
   MONTSERRAT: 'Montserrat-Regular',
   MONTSERRAT_BOLD: 'Montserrat-Bold',
