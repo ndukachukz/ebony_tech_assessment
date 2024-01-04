@@ -38,7 +38,7 @@ yarn
 ### Android
 
 ```bash
-yarn android
+yarn build:debugapk
 ```
 
 The Android build output will be located at: `./android/app/build/outputs/apk/debug/app-debug.apk`
