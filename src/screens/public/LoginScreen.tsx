@@ -105,9 +105,9 @@ export const LoginScreen = () => {
             }}
             scaleIcon={2}
             iconAfter={
-              !mutation.isLoading && (
+              mutation.isLoading ? (
                 <Spinner size="small" color={COLORS.WHITE} />
-              )
+              ) : undefined
             }
             onPress={handleSubmit(onSubmit)}>
             Next
