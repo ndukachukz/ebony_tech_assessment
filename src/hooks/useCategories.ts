@@ -17,13 +17,9 @@ export function useCategories() {
     queryKey: ['categories'],
     queryFn: fetchCategories,
     onSuccess(data) {
-      console.log('FETCHED CATEGORIES => ', data);
       dispatch({type: 'set_categories', payload: {categories: data}});
     },
-    onError(error) {
-      if (isAxiosError(error))
-        console.log('ERROR FETCHING CATEGORIES => ', error.message);
-    },
+    onError(error) {},
   });
 
   return query;

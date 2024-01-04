@@ -5,12 +5,12 @@ import {
   Platform,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {Text, Stack, H1, Button, Input} from 'tamagui';
-import {UilAngleRightB, UilSpinnerAlt} from '@iconscout/react-native-unicons';
+import {Text, Stack, H1, Button, Input, Spinner} from 'tamagui';
 import {useForm, Controller} from 'react-hook-form';
 
 import {COLORS, FONTS} from '../../constants';
 import {useLogin} from '../../hooks/useLogin';
+import {UilAngleRightB, UilSpinnerAlt} from '../../components/svgs';
 
 interface Form {
   username: string;
@@ -104,7 +104,11 @@ export const LoginScreen = () => {
               fontSize: 20,
             }}
             scaleIcon={2}
-            iconAfter={!mutation.isLoading ? UilAngleRightB : UilSpinnerAlt}
+            iconAfter={
+              !mutation.isLoading && (
+                <Spinner size="small" color={COLORS.WHITE} />
+              )
+            }
             onPress={handleSubmit(onSubmit)}>
             Next
           </Button>

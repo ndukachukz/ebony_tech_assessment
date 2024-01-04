@@ -5,6 +5,10 @@ export const FAKESTOREAPI = {
     return `${this.BASE_URL}products/`;
   },
 
+  PRODUCT: function (id: number): string {
+    return `${this.BASE_URL}products/${id}`;
+  },
+
   CATEGORIES: function (): string {
     return `${this.PRODUCTS()}categories/`;
   },

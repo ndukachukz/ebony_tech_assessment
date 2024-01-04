@@ -16,12 +16,8 @@ export function useProducts() {
   const query = useQuery({
     queryKey: ['products'],
     queryFn: () => fetchtProducts(),
-    onSuccess(data) {
-      console.log('FETCHED PRODUCTS => ', data[0].category);
-    },
-    onError(error) {
-      console.log('ERROR FETCHING PRODUCTS => ', error);
-    },
+    onSuccess(data) {},
+    onError(error) {},
   });
 
   return query;

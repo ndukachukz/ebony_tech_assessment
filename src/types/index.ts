@@ -16,4 +16,5 @@ export type PublicStackParamList = {
 
 export type ProtectedStackParamList = {
   Home: undefined;
+  Product: {productId: number};
 };
